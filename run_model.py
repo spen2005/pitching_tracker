@@ -39,6 +39,11 @@ def user_input():
     timestamp = float(input("Timestamp: "))
     x_prime = float(input("x_prime: "))
     y_prime = float(input("y_prime: "))
+    # regularize
+    norm = math.sqrt(x_prime**2 + y_prime**2)
+    if norm != 0:
+        x_prime /= norm
+        y_prime /= norm
     input_data.extend([timestamp, x_prime, y_prime])
     return input_data
 
