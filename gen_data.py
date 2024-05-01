@@ -115,6 +115,8 @@ def generate_data(n):
             data.append(vec8_prime[0])
             data.append(vec8_prime[1])
             data.append(timestamp)
+            # normalize
+            point_prime = point_prime/np.linalg.norm(point_prime)
             data.append(point_prime[0])
             data.append(point_prime[1])
             data.append(point[0])
