@@ -99,9 +99,9 @@ def generate_data(n):
         # segment (start,end) cut into 10 pieces 
         for t in range (0,10):
             timestamp = t
-            x = start_point[0]+t*(end_point[0]-start_point[0])/10
-            y = start_point[1]+t*(end_point[1]-start_point[1])/10
-            z = start_point[2]+t*(end_point[2]-start_point[2])/10
+            x = start_point[0]+t*(end_point[0]-start_point[0])/9
+            y = start_point[1]+t*(end_point[1]-start_point[1])/9
+            z = start_point[2]+t*(end_point[2]-start_point[2])/9
             point = np.array([x,y,z])
             point_prime = position_after_transformation(cam_pos,cam_view,point)
             #add to the dataset
@@ -136,7 +136,7 @@ def generate_data(n):
     return dataset
 
 # generate training data
-train_data = generate_data(100000)
+train_data = generate_data(50000)
 df = pd.DataFrame(train_data)
 df.to_csv('train_data.csv',index=False)
 print('train data generated')

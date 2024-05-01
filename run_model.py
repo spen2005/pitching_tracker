@@ -65,12 +65,12 @@ if __name__ == "__main__":
 
     # 用户交互
     input_data = user_input(input_data)
+    for i in range(0,10):
+        data = input_data 
+        data[16] = i
+        # 模型预测
+        x_pred, y_pred, z_pred = predict(model, input_data)
 
-    # 模型预测
-    x_pred, y_pred, z_pred = predict(model, input_data)
-
-    # 输出预测结果
-    print(f"Predicted x: {x_pred}")
-    print(f"Predicted y: {y_pred}")
-    print(f"Predicted z: {z_pred}")
+        # 输出预测结果
+        print("(", x_pred, ",", y_pred, ",", z_pred, ")")
 
