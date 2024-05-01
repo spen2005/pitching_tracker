@@ -36,11 +36,12 @@ def generate_data(n):
     # 8 fixed points as information source
     dataset = []
     for i in range(n):
-        # camera position (x,y,z)=(6~10,1,0~3)
+        # camera position (x,y,z)=(0~10,0~10,0~10)
         # camera view (x/sqrt(x^2+y^2+z^2),y/sqrt(x^2+y^2+z^2),z/sqrt(x^2+y^2+z^2)
-        x = np.random.uniform(6,10)
-        y = 1
-        z = np.random.uniform(0,3)
+        x = np.random.uniform(0,10)
+        y = np.random.uniform(0,10)
+        z = np.random.uniform(0,10)
+
         cam_pos = np.array([x,y,z])
         cam_view = np.array([x/np.sqrt(x**2+y**2+z**2),y/np.sqrt(x**2+y**2+z**2),z/np.sqrt(x**2+y**2+z**2)])
         # fixed points
@@ -135,7 +136,7 @@ def generate_data(n):
     return dataset
 
 # generate training data
-train_data = generate_data(50000)
+train_data = generate_data(10000)
 df = pd.DataFrame(train_data)
 df.to_csv('train_data.csv',index=False)
 print('train data generated')
