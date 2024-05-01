@@ -46,6 +46,7 @@ def user_input(input_data):
     normalized_input_data.extend([timestamp, x_prime, y_prime])
     # print regularized input data
     print("Normalized input data:")
+    print(normalized_input_data)
     return normalized_input_data
 
 # 模型预测
