@@ -35,7 +35,7 @@ class CustomDataset(Dataset):
 
 # 训练函数
 def train_model(model, train_loader, criterion, optimizer, device, num_epochs=10):
-    print_every=20000
+    print_every=10000
     model.to(device)
     start_time = time.time()
     total_iterations = 0
