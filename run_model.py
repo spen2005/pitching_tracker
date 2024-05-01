@@ -1,6 +1,9 @@
 import torch
 import torch.nn as nn
 import math
+import sys
+
+input_data = sys.stdin.read()
 
 # 定义神经网络模型
 class SimpleNN(nn.Module):
@@ -25,20 +28,18 @@ def load_model():
 
 # 用户交互
 def user_input():
-    print("Please enter the following inputs:")
-    input_data = []
     for i in range(8):
-        vec_x = float(input(f"vec{i+1}.x: "))
-        vec_y = float(input(f"vec{i+1}.y: "))
+        vec_x = input_data[i*2]
+        vec_y = input_data[i*2+1]
         # 归一化
         norm = math.sqrt(vec_x**2 + vec_y**2)
         if norm != 0:
             vec_x /= norm
             vec_y /= norm
         input_data.extend([vec_x, vec_y])
-    timestamp = float(input("Timestamp: "))
-    x_prime = float(input("x_prime: "))
-    y_prime = float(input("y_prime: "))
+    timestamp = input_data[16]
+    x_prime = input_data[17]
+    y_prime = input_data[18]
     # regularize
     norm = math.sqrt(x_prime**2 + y_prime**2)
     if norm != 0:
