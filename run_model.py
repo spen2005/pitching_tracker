@@ -60,12 +60,12 @@ if __name__ == "__main__":
     model = load_model()
 
     # 读取文件内容
-    with open('input.txt', 'r') as file:
+    with open('input2.txt', 'r') as file:
         input_data = file.read().split()  # 按空格分割文件内容并存储为列表
 
     # 用户交互
     input_data = user_input(input_data)
-    
+
     x_pred, y_pred, z_pred = predict(model, input_data)
 
         # 输出预测结果

@@ -98,7 +98,7 @@ def generate_data(n):
         z = np.random.uniform(0,2)
         end_point = np.array([x,y,z])
         # segment (start,end) cut into 10 pieces 
-        for t in range (0,10):
+        for t in range (9,10):
             timestamp = t
             x = start_point[0]+t*(end_point[0]-start_point[0])/9
             y = start_point[1]+t*(end_point[1]-start_point[1])/9
@@ -137,7 +137,7 @@ def generate_data(n):
     return dataset
 
 # generate training data
-train_data = generate_data(1000)
+train_data = generate_data(100000)
 df = pd.DataFrame(train_data)
 df.to_csv('train_data.csv',index=False)
 print('train data generated')
