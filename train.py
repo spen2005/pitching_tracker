@@ -51,15 +51,17 @@ def train_model(model, train_loader, criterion, optimizer, device, num_epochs=10
         epoch_time = time.time() - start_time
         print(f"Epoch {epoch+1}/{num_epochs}, Loss: {running_loss / len(train_loader)}, Time elapsed: {epoch_time:.2f} seconds, Estimated remaining time: {(num_epochs - epoch - 1) * epoch_time:.2f} seconds")
 
+    # 保存模型参数
+    torch.save(model.state_dict(), 'model.pth')
+
 # 主程序
 if __name__ == "__main__":
     # 检查是否有可用的GPU
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("Using device:", device)
 
-    # 加载训练数据和测试数据，并将其移到所选的设备上
+    # 加载训练数据，并将其移到所选的设备上
     train_dataset = CustomDataset('train_data.csv')
-    test_dataset = CustomDataset('test_data.csv')
 
     # 定义模型并将其移到所选的设备上
     input_size = len(train_dataset[0][0])
@@ -71,7 +73,6 @@ if __name__ == "__main__":
 
     # 创建数据加载器，并将其移到所选的设备上
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-    test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 
     # 训练模型
     train_model(model, train_loader, criterion, optimizer, device)
