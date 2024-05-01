@@ -42,21 +42,15 @@ def generate_data(n):
         y = np.random.uniform(20,35)
         z = np.random.uniform(5,20)
         cam_pos = np.array([x,y,z])
-        
-        x = np.random.uniform(x-5,x+5)
-        y = np.random.uniform(y-5,y+5)
-        z = np.random.uniform(z,z+5)
-
         cam_view = np.array([x,y,z])
         #normalize
         cam_view = cam_view/np.linalg.norm(cam_view)
         # fixed points
-        vec1 = np.array([-21.64,0.0,0.0])
+        vec1 = np.array([-0.2164,0.0,0.0])
         vec2 = np.array([0.91,0.365,0])
         vec3 = np.array([-0.91,0.365,0])
         vec4 = np.array([0.91,-0.365,0])
         vec5 = np.array([-0.91,-0.365,0])
-        vec1 = np.array([-21.64,0.0,0.0])
         # transforamtion
         vec = position_after_transformation(cam_pos,cam_view,vec1)
         vec1_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
