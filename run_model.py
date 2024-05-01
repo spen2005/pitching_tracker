@@ -40,11 +40,12 @@ def user_input(input_data):
     timestamp = input_data[16]
     x_prime = input_data[17]
     y_prime = input_data[18]
-
     if regularization_value != 0:
         x_prime /= regularization_value
         y_prime /= regularization_value
     normalized_input_data.extend([timestamp, x_prime, y_prime])
+    # print regularized input data
+    print("Normalized input data:")
     return normalized_input_data
 
 # 模型预测
