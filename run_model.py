@@ -18,7 +18,7 @@ class SimpleNN(nn.Module):
 
 # 加载训练好的模型参数
 def load_model():
-    model = SimpleNN(input_size=19, hidden_size=64, output_size=3)
+    model = SimpleNN(input_size=13, hidden_size=64, output_size=3)
     model.load_state_dict(torch.load('model.pth'))
     model.eval()
     return model
@@ -29,7 +29,7 @@ def user_input(input_data):
     normalized_input_data = []
     #regularization_value = sqrt(input_data[0]**2 + input_data[1]**2)
     regularization_value = math.sqrt(input_data[0]**2 + input_data[1]**2)
-    for i in range(8):
+    for i in range(5):
         vec_x = input_data[i*2]
         vec_y = input_data[i*2+1]
 
@@ -37,9 +37,9 @@ def user_input(input_data):
             vec_x /= regularization_value
             vec_y /= regularization_value
         normalized_input_data.extend([vec_x, vec_y])
-    timestamp = input_data[16]
-    x_prime = input_data[17]
-    y_prime = input_data[18]
+    timestamp = input_data[10]
+    x_prime = input_data[11]
+    y_prime = input_data[12]
     if regularization_value != 0:
         x_prime /= regularization_value
         y_prime /= regularization_value
@@ -65,12 +65,9 @@ if __name__ == "__main__":
 
     # 用户交互
     input_data = user_input(input_data)
-    for i in range(0,10):
-        data = input_data 
-        data[16] = i
-        # 模型预测
-        x_pred, y_pred, z_pred = predict(model, input_data)
+    
+    x_pred, y_pred, z_pred = predict(model, input_data)
 
         # 输出预测结果
-        print("(", x_pred, ",", y_pred, ",", z_pred, ")")
+    print("(", x_pred, ",", y_pred, ",", z_pred, ")")
 

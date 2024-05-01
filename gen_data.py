@@ -32,8 +32,8 @@ def position_after_transformation(cam_pos,cam_view,point):
     return matrix.dot(point)
 
 def generate_data(n):
-    # input data (vec1,vec2,...,vec8,timestamp,x',y',x,y,z)
-    # 8 fixed points as information source
+    # input data (vec1,vec2,...,vec5,timestamp,x',y',x,y,z)
+    # 5 fixed points as information source
     dataset = []
     for i in range(n):
         # camera position (x,y,z)=(100~130,20~35,5~20) randomly sample
@@ -43,22 +43,20 @@ def generate_data(n):
         z = np.random.uniform(5,20)
         cam_pos = np.array([x,y,z])
         
-        x = np.random.uniform(x-10,x+10)
-        y = np.random.uniform(y-10,y+10)
-        z = np.random.uniform(z-10,z+10)
+        x = np.random.uniform(x-5,x+5)
+        y = np.random.uniform(y-5,y+5)
+        z = np.random.uniform(z,z+5)
 
         cam_view = np.array([x,y,z])
         #normalize
         cam_view = cam_view/np.linalg.norm(cam_view)
         # fixed points
-        vec1 = np.array([0.91,1.585,0])
+        vec1 = np.array([-21.64,0.0,0.0])
         vec2 = np.array([0.91,0.365,0])
-        vec3 = np.array([-0.91,1.585,0])
-        vec4 = np.array([-0.91,0.365,0])
-        vec5 = np.array([0.91,-1.585,0])
-        vec6 = np.array([0.91,-0.365,0])
-        vec7 = np.array([-0.91,-1.585,0])
-        vec8 = np.array([-0.91,-0.365,0])
+        vec3 = np.array([-0.91,0.365,0])
+        vec4 = np.array([0.91,-0.365,0])
+        vec5 = np.array([-0.91,-0.365,0])
+        vec1 = np.array([-21.64,0.0,0.0])
         # transforamtion
         vec = position_after_transformation(cam_pos,cam_view,vec1)
         vec1_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
@@ -81,17 +79,17 @@ def generate_data(n):
         vec5_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
         vec5_prime = vec5_prime/regularization_value
 
-        vec = position_after_transformation(cam_pos,cam_view,vec6)
-        vec6_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        vec6_prime = vec6_prime/regularization_value
+        #vec = position_after_transformation(cam_pos,cam_view,vec6)
+        #vec6_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
+        #vec6_prime = vec6_prime/regularization_value
 
-        vec = position_after_transformation(cam_pos,cam_view,vec7)
-        vec7_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        vec7_prime = vec7_prime/regularization_value
+        #vec = position_after_transformation(cam_pos,cam_view,vec7)
+        #vec7_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
+        #vec7_prime = vec7_prime/regularization_value
 
-        vec = position_after_transformation(cam_pos,cam_view,vec8)
-        vec8_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        vec8_prime = vec8_prime/regularization_value
+        #vec = position_after_transformation(cam_pos,cam_view,vec8)
+        #vec8_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
+        #vec8_prime = vec8_prime/regularization_value
         # start point = (17.44~18.44,-2~2,1.6~2.0) randomly sample
         # end point = (0,-2~2,0~2) randomly sample
         x = np.random.uniform(17.44,18.44)
@@ -122,12 +120,12 @@ def generate_data(n):
             data.append(vec4_prime[1])
             data.append(vec5_prime[0])
             data.append(vec5_prime[1])
-            data.append(vec6_prime[0])
-            data.append(vec6_prime[1])
-            data.append(vec7_prime[0])
-            data.append(vec7_prime[1])
-            data.append(vec8_prime[0])
-            data.append(vec8_prime[1])
+            #data.append(vec6_prime[0])
+            #data.append(vec6_prime[1])
+            #data.append(vec7_prime[0])
+            #data.append(vec7_prime[1])
+            #data.append(vec8_prime[0])
+            #data.append(vec8_prime[1])
             data.append(timestamp)
             # normalize
             point_prime = point_prime/regularization_value
@@ -142,7 +140,7 @@ def generate_data(n):
     return dataset
 
 # generate training data
-train_data = generate_data(50000)
+train_data = generate_data(10000)
 df = pd.DataFrame(train_data)
 df.to_csv('train_data.csv',index=False)
 print('train data generated')
