@@ -42,6 +42,9 @@ def generate_data(n):
         y = np.random.uniform(20,35)
         z = np.random.uniform(5,20)
         cam_pos = np.array([x,y,z])
+        x = np.random.uniform(x-10,x+10)
+        y = np.random.uniform(y-10,y+10)
+        z = np.random.uniform(z-10,z+10)
         cam_view = np.array([x,y,z])
         #normalize
         cam_view = cam_view/np.linalg.norm(cam_view)
@@ -134,7 +137,7 @@ def generate_data(n):
     return dataset
 
 # generate training data
-train_data = generate_data(10000)
+train_data = generate_data(1000)
 df = pd.DataFrame(train_data)
 df.to_csv('train_data.csv',index=False)
 print('train data generated')
