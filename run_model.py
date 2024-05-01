@@ -27,23 +27,23 @@ def load_model():
 def user_input(input_data):
     input_data = [float(num) for num in input_data]  # 将输入转换为浮点数
     normalized_input_data = []
+    #regularization_value = sqrt(input_data[0]**2 + input_data[1]**2)
+    regularization_value = math.sqrt(input_data[0]**2 + input_data[1]**2)
     for i in range(8):
         vec_x = input_data[i*2]
         vec_y = input_data[i*2+1]
-        # 归一化
-        norm = math.sqrt(vec_x**2 + vec_y**2)
-        if norm != 0:
-            vec_x /= norm
-            vec_y /= norm
+
+        if regularization_value != 0:
+            vec_x /= regularization_value
+            vec_y /= regularization_value
         normalized_input_data.extend([vec_x, vec_y])
     timestamp = input_data[16]
     x_prime = input_data[17]
     y_prime = input_data[18]
-    # regularize
-    norm = math.sqrt(x_prime**2 + y_prime**2)
-    if norm != 0:
-        x_prime /= norm
-        y_prime /= norm
+
+    if regularization_value != 0:
+        x_prime /= regularization_value
+        y_prime /= regularization_value
     normalized_input_data.extend([timestamp, x_prime, y_prime])
     return normalized_input_data
 
