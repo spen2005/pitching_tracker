@@ -1,9 +1,6 @@
 import torch
 import torch.nn as nn
 import math
-import sys
-
-input_data = sys.stdin.read()
 
 # 定义神经网络模型
 class SimpleNN(nn.Module):
@@ -27,7 +24,9 @@ def load_model():
     return model
 
 # 用户交互
-def user_input():
+def user_input(input_data):
+    input_data = [float(num) for num in input_data]  # 将输入转换为浮点数
+    normalized_input_data = []
     for i in range(8):
         vec_x = input_data[i*2]
         vec_y = input_data[i*2+1]
@@ -36,7 +35,7 @@ def user_input():
         if norm != 0:
             vec_x /= norm
             vec_y /= norm
-        input_data.extend([vec_x, vec_y])
+        normalized_input_data.extend([vec_x, vec_y])
     timestamp = input_data[16]
     x_prime = input_data[17]
     y_prime = input_data[18]
@@ -45,8 +44,8 @@ def user_input():
     if norm != 0:
         x_prime /= norm
         y_prime /= norm
-    input_data.extend([timestamp, x_prime, y_prime])
-    return input_data
+    normalized_input_data.extend([timestamp, x_prime, y_prime])
+    return normalized_input_data
 
 # 模型预测
 def predict(model, input_data):
@@ -58,8 +57,12 @@ if __name__ == "__main__":
     # 加载模型
     model = load_model()
 
+    # 读取文件内容
+    with open('input.txt', 'r') as file:
+        input_data = file.read().split()  # 按空格分割文件内容并存储为列表
+
     # 用户交互
-    input_data = user_input()
+    input_data = user_input(input_data)
 
     # 模型预测
     x_pred, y_pred, z_pred = predict(model, input_data)
@@ -68,3 +71,4 @@ if __name__ == "__main__":
     print(f"Predicted x: {x_pred}")
     print(f"Predicted y: {y_pred}")
     print(f"Predicted z: {z_pred}")
+
