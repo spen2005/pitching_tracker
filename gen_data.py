@@ -85,14 +85,14 @@ def generate_data(n):
         vec8_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
         vec8_prime = vec8_prime/np.linalg.norm(vec8_prime)
         # start point = (17.44~18.44,-2~2,1.6~2.0) randomly sample
-        # end point = (0,-2~2,-2~2) randomly sample
+        # end point = (0,-2~2,0~2) randomly sample
         x = np.random.uniform(17.44,18.44)
-        y = np.random.uniform(-2,2)
+        y = np.random.uniform(0.5,1.0)
         z = np.random.uniform(1.6,2.0)
         start_point = np.array([x,y,z])
         x = 0
         y = np.random.uniform(-2,2)
-        z = np.random.uniform(-2,2)
+        z = np.random.uniform(0,2)
         end_point = np.array([x,y,z])
         # segment (start,end) cut into 10 pieces 
         for t in range (0,10):
