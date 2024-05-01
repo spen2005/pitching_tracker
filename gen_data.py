@@ -55,35 +55,36 @@ def generate_data(n):
         # transforamtion
         vec = position_after_transformation(cam_pos,cam_view,vec1)
         vec1_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        vec1_prime = vec1_prime/np.linalg.norm(vec1_prime)
+        regularization_value = np.linalg.norm(vec1_prime)
+        vec1_prime = vec1_prime/regularization_value
 
         vec = position_after_transformation(cam_pos,cam_view,vec2)
         vec2_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        vec2_prime = vec2_prime/np.linalg.norm(vec1_prime)
+        vec2_prime = vec2_prime/regularization_value
 
         vec = position_after_transformation(cam_pos,cam_view,vec3)
         vec3_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        vec3_prime = vec3_prime/np.linalg.norm(vec1_prime)
+        vec3_prime = vec3_prime/regularization_value
 
         vec = position_after_transformation(cam_pos,cam_view,vec4)
         vec4_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        vec4_prime = vec4_prime/np.linalg.norm(vec1_prime)
+        vec4_prime = vec4_prime/regularization_value
 
         vec = position_after_transformation(cam_pos,cam_view,vec5)
         vec5_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        vec5_prime = vec5_prime/np.linalg.norm(vec1_prime)
+        vec5_prime = vec5_prime/regularization_value
 
         vec = position_after_transformation(cam_pos,cam_view,vec6)
         vec6_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        vec6_prime = vec6_prime/np.linalg.norm(vec1_prime)
+        vec6_prime = vec6_prime/regularization_value
 
         vec = position_after_transformation(cam_pos,cam_view,vec7)
         vec7_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        vec7_prime = vec7_prime/np.linalg.norm(vec1_prime)
+        vec7_prime = vec7_prime/regularization_value
 
         vec = position_after_transformation(cam_pos,cam_view,vec8)
         vec8_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        vec8_prime = vec8_prime/np.linalg.norm(vec1_prime)
+        vec8_prime = vec8_prime/regularization_value
         # start point = (17.44~18.44,-2~2,1.6~2.0) randomly sample
         # end point = (0,-2~2,0~2) randomly sample
         x = np.random.uniform(17.44,18.44)
@@ -122,7 +123,7 @@ def generate_data(n):
             data.append(vec8_prime[1])
             data.append(timestamp)
             # normalize
-            point_prime = point_prime/np.linalg.norm(vec1_prime)
+            point_prime = point_prime/regularization_value
             data.append(point_prime[0])
             data.append(point_prime[1])
             data.append(point[0])
