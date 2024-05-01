@@ -36,14 +36,20 @@ def generate_data(n):
     # 8 fixed points as information source
     dataset = []
     for i in range(n):
-        # camera position (x,y,z)=(0~10,0~10,0~10)
-        # camera view (x/sqrt(x^2+y^2+z^2),y/sqrt(x^2+y^2+z^2),z/sqrt(x^2+y^2+z^2)
-        x = np.random.uniform(0,10)
-        y = np.random.uniform(0,10)
-        z = np.random.uniform(0,10)
-
+        # camera position (x,y,z)=(100~130,20~35,5~20) randomly sample
+        # camera view (x-10~x+10,y-10~y+10,z-10~z+10) randomly sample
+        x = np.random.uniform(100,130)
+        y = np.random.uniform(20,35)
+        z = np.random.uniform(5,20)
         cam_pos = np.array([x,y,z])
-        cam_view = np.array([x/np.sqrt(x**2+y**2+z**2),y/np.sqrt(x**2+y**2+z**2),z/np.sqrt(x**2+y**2+z**2)])
+        
+        x = np.random.uniform(x-10,x+10)
+        y = np.random.uniform(y-10,y+10)
+        z = np.random.uniform(z-10,z+10)
+
+        cam_view = np.array([x,y,z])
+        #normalize
+        cam_view = cam_view/np.linalg.norm(cam_view)
         # fixed points
         vec1 = np.array([0.91,1.585,0])
         vec2 = np.array([0.91,0.365,0])
