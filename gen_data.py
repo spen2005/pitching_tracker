@@ -128,16 +128,19 @@ def generate_data(n):
             point_prime = point_prime/regularization_value
             data.append(point_prime[0])
             data.append(point_prime[1])
-            data.append(point[0])
-            data.append(point[1])
-            data.append(point[2])
+            data.append(100*point[0])
+            data.append(100*point[1])
+            data.append(100*point[2])
+            data.append(cam_pos[0])
+            data.append(cam_pos[1])
+            data.append(cam_pos[2])
             dataset.append(data)
     #randomly sort the dataset then return
     np.random.shuffle(dataset)
     return dataset
 
 # generate training data
-train_data = generate_data(100000)
+train_data = generate_data(1000000)
 df = pd.DataFrame(train_data)
 df.to_csv('train_data.csv',index=False)
 print('train data generated')

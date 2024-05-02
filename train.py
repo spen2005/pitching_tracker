@@ -29,8 +29,8 @@ class CustomDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        features = self.data.iloc[idx, :-3].values
-        label = self.data.iloc[idx, -3:].values
+        features = self.data.iloc[idx, :-6].values
+        label = self.data.iloc[idx, -6:].values
         return torch.tensor(features, dtype=torch.float32), torch.tensor(label, dtype=torch.float32)
 
 # 训练函数
@@ -39,6 +39,7 @@ def train_model(model, train_loader, criterion, optimizer, device, num_epochs=10
     model.to(device)
     start_time = time.time()
     iterloss = 0
+    iterations = 0
     for epoch in range(num_epochs):
         model.train()
         running_loss = 0.0
@@ -51,6 +52,10 @@ def train_model(model, train_loader, criterion, optimizer, device, num_epochs=10
             optimizer.step()
             running_loss += loss.item()
             iterloss += loss.item()
+            iterations += 1
+            if iterations % print_every == 0:
+                print(f"Iteration {iterations}, Loss: {iterloss / print_every}")
+                iterloss = 0
         epoch_time = time.time() - start_time
         print(f"Epoch {epoch+1}/{num_epochs}, Loss: {running_loss / len(train_loader)}, Time elapsed: {epoch_time:.2f} seconds, Estimated remaining time: {(num_epochs - epoch - 1) * epoch_time:.2f} seconds")
 
