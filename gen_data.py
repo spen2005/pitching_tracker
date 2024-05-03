@@ -76,29 +76,16 @@ def generate_data(n):
         vec5_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
         vec5_prime = vec5_prime/regularization_value
 
-        #vec = position_after_transformation(cam_pos,cam_view,vec6)
-        #vec6_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        #vec6_prime = vec6_prime/regularization_value
-
-        #vec = position_after_transformation(cam_pos,cam_view,vec7)
-        #vec7_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        #vec7_prime = vec7_prime/regularization_value
-
-        #vec = position_after_transformation(cam_pos,cam_view,vec8)
-        #vec8_prime = np.array([vec[0]/vec[2],vec[1]/vec[2]])
-        #vec8_prime = vec8_prime/regularization_value
-        # start point = (17.44~18.44,-2~2,1.6~2.0) randomly sample
-        # end point = (0,-2~2,0~2) randomly sample
         x = np.random.uniform(17.44,18.44)
-        y = np.random.uniform(0.5,1.0)
-        z = np.random.uniform(1.6,2.0)
+        y = np.random.uniform(0.5,1.5)
+        z = np.random.uniform(1.6,2.2)
         start_point = np.array([x,y,z])
         x = 0
         y = np.random.uniform(-2,2)
         z = np.random.uniform(0,2)
         end_point = np.array([x,y,z])
         # segment (start,end) cut into 10 pieces 
-        for t in range (9,10):
+        for t in range (0,10):
             timestamp = t
             x = start_point[0]+t*(end_point[0]-start_point[0])/9
             y = start_point[1]+t*(end_point[1]-start_point[1])/9
@@ -133,15 +120,17 @@ def generate_data(n):
             # normalize
             point_prime = point_prime/regularization_value
             # 取小數點後兩位
+            point = 100*point
+
             point_prime = np.round(point_prime,2)
             point = np.round(point,2)
             cam_pos = np.round(cam_pos,2)
 
             data.append(point_prime[0])
             data.append(point_prime[1])
-            data.append(100*point[0])
-            data.append(100*point[1])
-            data.append(100*point[2])
+            data.append(point[0])
+            data.append(point[1])
+            data.append(point[2])
             data.append(cam_pos[0])
             data.append(cam_pos[1])
             data.append(cam_pos[2])
@@ -151,7 +140,7 @@ def generate_data(n):
     return dataset
 
 # generate training data
-train_data = generate_data(500000)
+train_data = generate_data(100000)
 df = pd.DataFrame(train_data)
 df.to_csv('train_data.csv',index=False)
 print('train data generated')
