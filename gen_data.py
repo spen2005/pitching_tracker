@@ -38,13 +38,13 @@ def generate_data(n):
     for i in range(n):
         # camera position (x,y,z)=(100~130,20~35,5~20) randomly sample
         # camera view (x-10~x+10,y-10~y+10,z-10~z+10) randomly sample
-        x = np.random.uniform(100,130)
-        y = np.random.uniform(20,35)
-        z = np.random.uniform(5,20)
+        x = np.random.uniform(120,150)
+        y = np.random.uniform(0,20)
+        z = np.random.uniform(3,20)
         cam_pos = np.array([x,y,z])
         x = np.random.uniform(x-10,x+10)
         y = np.random.uniform(y-10,y+10)
-        z = np.random.uniform(z-10,z+10)
+        z = np.random.uniform(z,z+10)
         cam_view = np.array([x,y,z])
         #normalize
         cam_view = cam_view/np.linalg.norm(cam_view)
@@ -107,6 +107,12 @@ def generate_data(n):
             point_prime = position_after_transformation(cam_pos,cam_view,point)
             #add to the dataset
             data = []
+            # 取小數點後兩位
+            vec1_prime = np.round(vec1_prime,2)
+            vec2_prime = np.round(vec2_prime,2)
+            vec3_prime = np.round(vec3_prime,2)
+            vec4_prime = np.round(vec4_prime,2)
+            vec5_prime = np.round(vec5_prime,2)
             data.append(vec1_prime[0])
             data.append(vec1_prime[1])
             data.append(vec2_prime[0])
@@ -126,6 +132,11 @@ def generate_data(n):
             data.append(timestamp)
             # normalize
             point_prime = point_prime/regularization_value
+            # 取小數點後兩位
+            point_prime = np.round(point_prime,2)
+            point = np.round(point,2)
+            cam_pos = np.round(cam_pos,2)
+
             data.append(point_prime[0])
             data.append(point_prime[1])
             data.append(100*point[0])
@@ -140,7 +151,7 @@ def generate_data(n):
     return dataset
 
 # generate training data
-train_data = generate_data(1000000)
+train_data = generate_data(500000)
 df = pd.DataFrame(train_data)
 df.to_csv('train_data.csv',index=False)
 print('train data generated')

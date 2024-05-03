@@ -58,7 +58,7 @@ def train_model(model, train_loader, criterion, optimizer, device, num_epochs=20
             iterloss += loss.item()
             total += 1
             if total % print_every == 0:
-                print(f"Epoch {epoch+1}/{num_epochs}, Loss: {iterloss / print_every}")
+                print(f"Iteration: {total} Loss: {iterloss / print_every}")
                 iterloss = 0
         epoch_time = time.time() - start_time
         print(f"Epoch {epoch+1}/{num_epochs}, Loss: {running_loss / len(train_loader)}, Time elapsed: {epoch_time:.2f} seconds, Estimated remaining time: {(num_epochs - epoch - 1) * epoch_time:.2f} seconds")
