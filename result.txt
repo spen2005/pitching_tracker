@@ -1,0 +1,11 @@
+Using device: cuda
+Epoch 1/10, Loss: 0.38870886779447134, Time elapsed: 215.44 seconds, Estimated remaining time: 1938.99 seconds
+Epoch 2/10, Loss: 0.14822278552364787, Time elapsed: 425.99 seconds, Estimated remaining time: 3407.89 seconds
+Epoch 3/10, Loss: 0.16583712449642754, Time elapsed: 635.37 seconds, Estimated remaining time: 4447.58 seconds
+Epoch 4/10, Loss: 0.11377567171089234, Time elapsed: 848.14 seconds, Estimated remaining time: 5088.85 seconds
+Epoch 5/10, Loss: 0.19755609591086115, Time elapsed: 1066.02 seconds, Estimated remaining time: 5330.09 seconds
+Epoch 6/10, Loss: 0.09133139913373624, Time elapsed: 1276.08 seconds, Estimated remaining time: 5104.32 seconds
+Epoch 7/10, Loss: 0.08363449089224338, Time elapsed: 1487.02 seconds, Estimated remaining time: 4461.05 seconds
+Epoch 8/10, Loss: 0.07986119647343348, Time elapsed: 1713.05 seconds, Estimated remaining time: 3426.10 seconds
+Epoch 9/10, Loss: 0.07333724144939179, Time elapsed: 1930.18 seconds, Estimated remaining time: 1930.18 seconds
+Epoch 10/10, Loss: 0.07335203256599655, Time elapsed: 2140.93 seconds, Estimated remaining time: 0.00 seconds

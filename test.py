@@ -37,7 +37,7 @@ if __name__ == "__main__":
     # 定义模型并将其移到所选的设备上
     input_size = len(test_dataset[0][0])
     output_size = len(test_dataset[0][1])
-    hidden_size = 64
+    hidden_size = 128
     model = SimpleNN(input_size, hidden_size, output_size)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)

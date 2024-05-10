@@ -33,12 +33,12 @@ class CustomDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        features = self.data.iloc[idx, :-6].values
-        label = self.data.iloc[idx, -6:].values
+        features = self.data.iloc[idx, :-3].values
+        label = self.data.iloc[idx, -3:].values
         return torch.tensor(features, dtype=torch.float32), torch.tensor(label, dtype=torch.float32)
 
 # 训练函数
-def train_model(model, train_loader, criterion, optimizer, device, num_epochs=20):
+def train_model(model, train_loader, criterion, optimizer, device, num_epochs=10):
     print_every = 10000
     model.to(device)
     start_time = time.time()
@@ -64,7 +64,7 @@ def train_model(model, train_loader, criterion, optimizer, device, num_epochs=20
         print(f"Epoch {epoch+1}/{num_epochs}, Loss: {running_loss / len(train_loader)}, Time elapsed: {epoch_time:.2f} seconds, Estimated remaining time: {(num_epochs - epoch - 1) * epoch_time:.2f} seconds")
 
     # 保存模型参数
-    torch.save(model.state_dict(), 'model.pth')
+    torch.save(model.state_dict(), 'model_all_nt.pth')
 
 
 # 主程序
