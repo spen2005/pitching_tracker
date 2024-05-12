@@ -66,11 +66,12 @@ while True:
         break
     ct += 1
 
-# 將Output寫入結果文件
+#write Output to final_output_file
 for i in range(ct):
-    for j in range(13):
-        final_output_file.write(f"{Output[i][j]} ")
-    final_output_file.write("\n")
+    for j in range(10):
+        final_output_file.write(f"{Output[0][j]} ")
+    final_output_file.write(f"{(i+1)/ct*9} ")
+    final_output_file.write(f"{Output[i][11]} {Output[i][12]}\n")
 
 # 釋放資源
 cap.release()
