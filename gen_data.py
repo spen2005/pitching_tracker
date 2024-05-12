@@ -148,7 +148,7 @@ def generate_data(n):
     return dataset
 
 # generate training data
-train_data = generate_data(1000000)
+train_data = generate_data(50000)
 df = pd.DataFrame(train_data)
 df.to_csv('train_data.csv',index=False)
 print('train data generated')

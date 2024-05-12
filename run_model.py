@@ -41,7 +41,7 @@ class ComplexNN(nn.Module):
 # 加载训练好的模型参数
 def load_model():
     model = ComplexNN(input_size=11, hidden_size1=128, hidden_size2=64, output_size=3)
-    model.load_state_dict(torch.load('model_all.pth'))
+    model.load_state_dict(torch.load('model_all_nt.pth'))
     model.eval()
     return model
 
@@ -89,7 +89,7 @@ if __name__ == "__main__":
     model = load_model()
 
     # 读取文件内容
-    with open('video/fastball_6/fastball_6_final.txt', 'r') as file:
+    with open('video/slider_1/slider_1_final.txt', 'r') as file:
         input_lines = file.readlines()  # 逐行读取文件内容
 
     predictions = []
