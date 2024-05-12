@@ -2,7 +2,7 @@ import cv2
 import os
 
 # 載入影片
-video_path = '../video/slider_1/slider_1.mp4'  # 根據新的結構更新影片路徑
+video_path = '../video/curveball_3/curveball_3.mp4'  # 根據新的結構更新影片路徑
 cap = cv2.VideoCapture(video_path)
 
 # 初始化追蹤器列表
@@ -24,7 +24,8 @@ for bbox in bbox_list:
 
 # 打開文件準備寫入追蹤結果
 video_dir = os.path.dirname(video_path)  # 獲取影片所在目錄
-output_file_path = os.path.join(video_dir, 'slider_1_final.txt')  # 將結果文件保存在影片目錄下
+video_name = os.path.splitext(os.path.basename(video_path))[0]  # 獲取影片文件名，不包括擴展名
+output_file_path = os.path.join(video_dir, f'{video_name}_final.txt')  # 根据视频文件名动态生成结果文件名
 final_output_file = open(output_file_path, 'w')
 
 total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
