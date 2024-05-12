@@ -38,7 +38,7 @@ class CustomDataset(Dataset):
         return torch.tensor(features, dtype=torch.float32), torch.tensor(label, dtype=torch.float32)
 
 # 训练函数
-def train_model(model, train_loader, criterion, optimizer, device, num_epochs=10):
+def train_model(model, train_loader, criterion, optimizer, device, num_epochs=15):
     print_every = 10000
     model.to(device)
     start_time = time.time()

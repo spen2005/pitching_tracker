@@ -81,17 +81,17 @@ def generate_data(n):
         vec5_prime = vec5_prime/regularization_value
 
         x = np.random.uniform(17.44,18.44)
-        y = np.random.uniform(0.5,1.5)
-        z = np.random.uniform(1.6,2.2)
+        y = np.random.uniform(-1.5,1.5)
+        z = np.random.uniform(1.6,2.4)
         start_point = np.array([x,y,z])
         x = 0
-        y = np.random.uniform(-0.5,0.5)
+        y = np.random.uniform(-0.6,0.6)
         z = np.random.uniform(0,2.1)
         end_point = np.array([x,y,z])
         # segment (start,end) cut into 10 pieces 
         for t in range (0,10):
             timestamp = t
-            tt = np.random.uniform(0,9)
+            tt = np.random.uniform(0,10)
             timestamp = tt
             x = start_point[0]+tt*(end_point[0]-start_point[0])/9
             y = start_point[1]+tt*(end_point[1]-start_point[1])/9
@@ -140,12 +140,15 @@ def generate_data(n):
             #data.append(cam_pos[1])
             #data.append(cam_pos[2])
             dataset.append(data)
+        if i % 100000 == 0:
+            print(i/100000)
+            print(n/100000)
     #randomly sort the dataset then return
     np.random.shuffle(dataset)
     return dataset
 
 # generate training data
-train_data = generate_data(50000)
+train_data = generate_data(1000000)
 df = pd.DataFrame(train_data)
 df.to_csv('train_data.csv',index=False)
 print('train data generated')
