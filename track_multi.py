@@ -1,7 +1,7 @@
 import cv2
 
 # 載入影片
-video_path = 'video/fastball_6/fastball_6.mp4'
+video_path = 'video/slider_1/slider_1.mp4'
 cap = cv2.VideoCapture(video_path)
 
 # 初始化追蹤器列表
