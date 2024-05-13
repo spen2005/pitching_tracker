@@ -41,7 +41,11 @@ class ComplexNN(nn.Module):
 # 加载训练好的模型参数
 def load_model():
     model = ComplexNN(input_size=11, hidden_size1=128, hidden_size2=64, output_size=3)
-    model.load_state_dict(torch.load('../models/model_all_nt.pth'))
+    #gpu
+    #model.load_state_dict(torch.load('../models/model_all_nt.pth'))
+    #cpu
+    model.load_state_dict(torch.load('../models/model_all_nt.pth', map_location=torch.device('cpu')))
+
     model.eval()
     return model
 
@@ -73,9 +77,9 @@ def user_input(input_data):
         x_prime /= regularization_value
         y_prime /= regularization_value
     normalized_input_data.extend([timestamp, x_prime, y_prime])
-    # print regularized input data
-    print("Normalized input data:")
-    print(normalized_input_data)
+    #print regularized input data
+    #print("Normalized input data:")
+    #print(normalized_input_data)
     return normalized_input_data
 
 # 模型预测
