@@ -93,7 +93,7 @@ if __name__ == "__main__":
     model = load_model()
 
     # 读取文件内容
-    with open('../video/slider_1/slider_1_final.txt', 'r') as file:
+    with open('../video/fastball_7/fastball_7-1.txt', 'r') as file:
         input_lines = file.readlines()  # 逐行读取文件内容
 
     predictions = []

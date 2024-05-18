@@ -10,7 +10,7 @@ def generate_unique_filename(video_dir, video_name):
         number += 1
 
 # Load the video
-video_path = '../video/curveball_3/curveball_3.mp4'
+video_path = '../video/fastball_7/fastball_7.mp4'
 cap = cv2.VideoCapture(video_path)
 
 # Initialize the tracker
