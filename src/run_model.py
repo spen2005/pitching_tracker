@@ -89,12 +89,13 @@ if __name__ == "__main__":
     model = load_model()
 
     #input file name
-    print("Enter the file name: ")
+    print("Enter the directory name: ")
+    dir_name = input()
+    print("Enter the file number: ")
     file_name = input()
-
     #open '../video/file_name.txt' and read the lines
 
-    with open('../video/' + file_name + '.txt', 'r') as file:
+    with open('../video/' + dir_name + '/' + dir_name + '-' + file_name + '.txt', 'r') as file:
         input_lines = file.readlines()
 
     #with open('../video/fastball_7/fastball_7-1.txt', 'r') as file:
@@ -118,7 +119,7 @@ if __name__ == "__main__":
 
     #write the result to {file_name}_location.txt
     
-    with open('../video/' + file_name + '_location.txt', 'w') as file:
+    with open('../video/' + dir_name + '/' + dir_name + '-' + file_name + '_location.txt', 'w') as file:
         file.write(output_string)
 
     print(output_string)
