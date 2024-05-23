@@ -2,6 +2,8 @@ import cv2
 import os
 
 def generate_unique_filename(video_dir, video_name):
+    output_file_path = os.path.join(video_dir, f'{video_name}-1.txt')
+    return output_file_path
     number = 1
     while True:
         output_file_path = os.path.join(video_dir, f'{video_name}-{number}.txt')

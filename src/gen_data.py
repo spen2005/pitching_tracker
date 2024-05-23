@@ -164,7 +164,7 @@ df.to_csv(train_file, index=False)
 print('train data generated')
 
 # 生成测试数据
-test_data = generate_data(100)
+test_data = generate_data(50000)
 # 将数据保存到指定路径下
 test_file = os.path.join(data_dir, "test_data.csv")
 df = pd.DataFrame(test_data)
