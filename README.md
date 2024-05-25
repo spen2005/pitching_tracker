@@ -11,7 +11,7 @@ Before running the code, make sure you have the following dependencies installed
 
 You can install these dependencies using the following command:
 
-```bash
+```bash Copy code
 pip install numpy pandas opencv-python torch
 ```
 ## Instructions for Data Generation and Model Training
@@ -21,8 +21,7 @@ First, generate the training and testing data by running the gen_data.py script.
 
 Open a terminal or command prompt, navigate to the project directory, and execute the following command:
 
-```bash
-Copy code
+```bash Copy code
 python gen_data.py
 ```
 This will create two CSV files, train_data.csv and test_data.csv, containing the generated data.
@@ -33,8 +32,7 @@ Once the data is generated, you can proceed to train the model using the train.p
 
 Run the following command in the terminal:
 
-```bash
-Copy code
+```bash Copy code
 python train.py
 ```
 This will train the model using the generated training data and save the trained model as model_all_7_layer.pth in the models directory.
