@@ -45,10 +45,14 @@ python main.py
 ```
 
 ## Input
-https://github.com/spen2005/pitching_location_predictor/assets/126836958/4544d3ef-6439-4f54-a5ac-99cf51d7b26f
-## Result
-![image](https://github.com/spen2005/pitching_location_predictor/assets/126836958/eca8d967-b134-48e1-ae3d-eb9c364e1903)
+https://github.com/spen2005/pitching_tracker/assets/126836958/a7dcd524-76d4-4256-a1bb-1be58ed49ff7
 
+## My Result
+https://github.com/spen2005/pitching_tracker/assets/126836958/e25f8582-cfba-402e-afda-96c07a6c6f30
 
+<img width="645" alt="Screen Shot 2024-05-25 at 10 40 49 PM" src="https://github.com/spen2005/pitching_tracker/assets/126836958/c364be9d-c09b-4f56-bdb1-88ee1b68cf5e">
+
+## MLB Trackman System
+<img width="822" alt="Screen Shot 2024-05-25 at 10 41 29 PM" src="https://github.com/spen2005/pitching_tracker/assets/126836958/c4f31f2d-9e21-4982-882e-1f2abc2ca71a">
 
 
