@@ -123,7 +123,7 @@ class ComplexNN(nn.Module):
 
 def load_model():
     model = ComplexNN(input_size=11, hidden_size1=128, hidden_size2=64, output_size=3)
-    model.load_state_dict(torch.load('../models/model_all_nt.pth', map_location=torch.device('cpu')))
+    model.load_state_dict(torch.load('../models/model.pth', map_location=torch.device('cpu')))
     model.eval()
     return model
 

@@ -65,7 +65,7 @@ def train_model(model, train_loader, criterion, optimizer, device, num_epochs=10
         epoch_time = time.time() - start_time
         print(f"Epoch {epoch+1}/{num_epochs}, Loss: {running_loss / len(train_loader)}, Time elapsed: {epoch_time:.2f} seconds, Estimated remaining time: {(num_epochs - epoch - 1) * epoch_time:.2f} seconds")
 
-    model_path = os.path.join("models", "model_all_7_layer.pth")
+    model_path = os.path.join("models", "your_model.pth")
     torch.save(model.state_dict(), model_path)
     print(f"Model saved to: {model_path}")
 
