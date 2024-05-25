@@ -39,7 +39,7 @@ This will train the model using the generated training data and save the trained
 
 Start Predictions:
 
-After the training is complete, you can use the trained model for pitching tracking.
+After the training is complete, you can use the trained model for pitching tracking. It would generate a trajectory video and blender scene.  
 ```bash Copy code
 python main.py
 ```
