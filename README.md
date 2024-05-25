@@ -15,7 +15,7 @@ You can install these dependencies using the following command:
 pip install numpy pandas opencv-python torch
 ```
 ## Instructions for Data Generation and Model Training
-Generate Data:
+### Generate Data:
 
 First, generate the training and testing data by running the gen_data.py script.
 
@@ -26,7 +26,7 @@ python gen_data.py
 ```
 This will create two CSV files, train_data.csv and test_data.csv, containing the generated data.
 
-Train the Model:
+### Train the Model:
 
 Once the data is generated, you can proceed to train the model using the train.py script.
 
@@ -39,8 +39,10 @@ This will train the model using the generated training data and save the trained
 
 Start Predictions:
 
-After the training is complete, you can use the trained model for predictions or other tasks by loading it in your Python scripts.
-
+After the training is complete, you can use the trained model for pitching tracking.
+```bash Copy code
+python main.py
+```
 
 ## Input
 https://github.com/spen2005/pitching_location_predictor/assets/126836958/4544d3ef-6439-4f54-a5ac-99cf51d7b26f
